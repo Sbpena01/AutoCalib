@@ -52,11 +52,9 @@ def reprojection_error(params, world_coords, corner_coords, R_list, t_list, log)
             X = world_coords[j]
             X = np.append(X, 1)
             x_real = project_point(X, K, R, t)
+            # They are already normalized from project_point()
             x = x_real[0]
             y = x_real[1]
-            
-            x = x_real[0] / x_real[2]
-            y = x_real[1] / x_real[2]
             
             # Apply distortion
             r2 = x**2 + y**2
